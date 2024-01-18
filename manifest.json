@@ -1,0 +1,50 @@
+{
+    "manifest_version":3,
+    "name": "ChatGPT AI Email Writer",
+    "version": "1.0.0",
+    "description": "Effortlessly Write Emails with ChatGPT AI Email Writer",
+    "action":{
+       
+        "default_title": "ChatGPT AI Email Writer",
+        "default_icon": {              
+          "32": "icon32.png", 
+          "64": "icon64.png",   
+          "128": "icon128.png"    
+        }
+    },
+    "icons": {
+      "32": "icon32.png", 
+      "64": "icon64.png",   
+      "128": "icon128.png" 
+    },
+    "host_permissions": [
+      "https://*.openai.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "*://mail.google.com/mail/u/0/*"
+        ],
+        "js": [
+          "content.js"
+        ],
+        "css": [
+          "content.css"
+        ],
+        "run_at": "document_end"
+      }
+    ],
+    "permissions":[
+        "storage",
+        "notifications"
+    ],
+    "web_accessible_resources": [
+      {
+      "resources": [ "Group.svg","cancel.svg","icon128.png","Vector.svg","info.svg","animation.png","greyStar.svg","yellowStar.svg"],
+      "matches": [ "http://*/*","https://*/*" ]
+      }
+      ]
+}
